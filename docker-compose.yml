@@ -1,0 +1,41 @@
+services:
+
+  db:
+    image: postgres:17
+    container_name: currency_db
+
+    environment:
+      POSTGRES_DB: currency_db
+      POSTGRES_USER: currency_user
+      POSTGRES_PASSWORD: currency_password
+
+    ports:
+      - "5432:5432"
+
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data
+
+  backend:
+    build: ./backend
+    container_name: currency_backend
+
+    restart: always
+
+    environment:
+      DATABASE_URL: postgresql://currency_user:currency_password@db:5432/currency_db
+
+    ports:
+      - "8000:8000"
+
+    depends_on:
+      - db
+
+  frontend:
+    build: ./frontend/currency-frontend
+    container_name: currency_frontend
+
+    ports:
+      - "4200:4200"
+
+    depends_on:
+      - backend

@@ -1,0 +1,105 @@
+<h1>Kursy Walut NBP</h1>
+
+<button (click)="fetchCurrencies()">
+  Pobierz kursy z NBP
+</button>
+
+<hr>
+
+<hr>
+
+<label>Rok:</label>
+
+<select
+  [(ngModel)]="selectedYear">
+
+  <option value="">
+    Wszystkie
+  </option>
+
+  <option
+    *ngFor="let year of years"
+    [value]="year">
+
+    {{ year }}
+
+  </option>
+
+</select>
+
+<label>Kwartał:</label>
+
+<select
+  [(ngModel)]="selectedQuarter">
+
+  <option value="">
+    Wszystkie
+  </option>
+
+  <option
+    *ngFor="let quarter of quarters"
+    [value]="quarter">
+
+    {{ quarter }}
+
+  </option>
+
+</select>
+
+<label>Miesiąc:</label>
+
+<select
+  [(ngModel)]="selectedMonth">
+
+  <option value="">
+    Wszystkie
+  </option>
+
+  <option
+    *ngFor="let month of months"
+    [value]="month">
+
+    {{ month }}
+
+  </option>
+
+</select>
+
+<hr>
+
+<p>Rekordów: {{ currencies.length }}</p>
+
+<p>Lata: {{ years.length }}</p>
+
+<p>Miesiące: {{ months.length }}</p>
+
+<p>Kwartały: {{ quarters.length }}</p>
+
+<table border="1">
+
+  <thead>
+    <tr>
+      <th>Kod</th>
+      <th>Waluta</th>
+      <th>Kurs</th>
+      <th>Data</th>
+    </tr>
+  </thead>
+
+  <tbody>
+
+    <tr *ngFor="let currency of filteredCurrencies()">
+
+      <td>{{ currency.code }}</td>
+
+      <td>{{ currency.currency }}</td>
+
+      <td>{{ currency.rate }}</td>
+
+      <td>{{ currency.rate_date }}</td>
+
+    </tr>
+
+  </tbody>
+
+</table>

@@ -1,0 +1,10 @@
+node_modules/
+pycache/
+*.pyc
+.env
+.vscode/
+dist/
+coverage/
+.angular/
+.idea/
+postgres_data/
