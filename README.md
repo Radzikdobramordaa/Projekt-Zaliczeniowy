@@ -1,0 +1,1 @@
+Aplikacja webowa do pobierania i prezentacji kursów walut NBP. Projekt został wykonany w technologii Angular (frontend), FastAPI (backend) oraz PostgreSQL (baza danych). Dane pobierane są z API Narodowego Banku Polskiego i przechowywane w bazie danych. Całość została skonteneryzowana przy użyciu Docker Compose.
